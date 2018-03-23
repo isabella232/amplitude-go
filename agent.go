@@ -154,14 +154,14 @@ func (c *Client) publish(events []Event) error {
 	params := url.Values{}
 	params.Set("api_key", c.apiKey)
 	params.Set("event", string(data))
-
 	ctx, _ := context.WithTimeout(context.Background(), time.Second*10)
 	resp, err := ctxhttp.PostForm(ctx, http.DefaultClient, ApiEndpoint, params)
 	if resp != nil {
 		defer resp.Body.Close()
 	}
-	c.onPublishFunc(resp.StatusCode, err)
-
+	if resp != nil {
+		c.onPublishFunc(resp.StatusCode, err)
+	}
 	return err
 }
 

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/savaki/amplitude-go"
+	"github.com/blueapron/amplitude-go"
 )
 
 func main() {
